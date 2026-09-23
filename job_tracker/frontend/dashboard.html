@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JobTrack - Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+
+                <div class="brand-icon">
+                    J
+                </div>
+
+                <span>
+                    JobTrack
+                </span>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a
+                    href="dashboard.html"
+                    class="nav-item active"
+                >
+                    <span class="nav-icon">⌂</span>
+                    Dashboard
+                </a>
+
+                <a
+                    href="applications.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">▣</span>
+                    Applications
+                </a>
+
+                <a
+                    href="interviews.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">◷</span>
+                    Interviews
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <button
+                    id="logoutButton"
+                    class="logout-btn"
+                >
+                    <span>↪</span>
+                    Logout
+                </button>
+
+            </div>
+
+        </aside>
+
+        <main class="main-content">
+
+            <header class="dashboard-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        OVERVIEW
+                    </p>
+
+                    <h1>
+                        Dashboard
+                    </h1>
+
+                    <p class="dashboard-subtitle">
+                        Track your job search and stay organized.
+                    </p>
+
+                </div>
+
+            </header>
+
+            <section class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+                        <span class="stat-label">
+                            Total Applications
+                        </span>
+
+                        <div class="stat-icon blue">
+                            ▣
+                        </div>
+                    </div>
+
+                    <div
+                        id="totalApplications"
+                        class="stat-number"
+                    >
+                        0
+                    </div>
+
+                    <p class="stat-description">
+                        All applications
+                    </p>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+
+                        <span class="stat-label">
+                            Applied
+                        </span>
+
+                        <div class="stat-icon purple">
+                            ↑
+                        </div>
+
+                    </div>
+
+                    <div
+                        id="appliedApplications"
+                        class="stat-number"
+                    >
+                        0
+                    </div>
+
+                    <p class="stat-description">
+                        Applications submitted
+                    </p>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+
+                        <span class="stat-label">
+                            Interviews
+                        </span>
+
+                        <div class="stat-icon orange">
+                            ◷
+                        </div>
+
+                    </div>
+
+                    <div
+                        id="interviewApplications"
+                        class="stat-number"
+                    >
+                        0
+                    </div>
+
+                    <p class="stat-description">
+                        Interview stage
+                    </p>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+
+                        <span class="stat-label">
+                            Offers
+                        </span>
+
+                        <div class="stat-icon green">
+                            ✓
+                        </div>
+
+                    </div>
+
+                    <div
+                        id="offerApplications"
+                        class="stat-number"
+                    >
+                        0
+                    </div>
+
+                    <p class="stat-description">
+                        Offers received
+                    </p>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+
+                        <span class="stat-label">
+                            Rejected
+                        </span>
+
+                        <div class="stat-icon red">
+                            ×
+                        </div>
+
+                    </div>
+
+                    <div
+                        id="rejectedApplications"
+                        class="stat-number"
+                    >
+                        0
+                    </div>
+
+                    <p class="stat-description">
+                        Applications rejected
+                    </p>
+
+                </div>
+
+            </section>
+
+            <section class="dashboard-grid">
+
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h2>
+                                Recent Applications
+                            </h2>
+
+                            <p>
+                                Your latest job applications
+                            </p>
+
+                        </div>
+
+                        <span class="card-symbol">
+                            ▣
+                        </span>
+
+                    </div>
+
+                    <div id="recentApplications">
+
+                        <p class="empty-message">
+                            Loading applications...
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h2>
+                                Upcoming Deadlines
+                            </h2>
+
+                            <p>
+                                Never miss an important deadline
+                            </p>
+
+                        </div>
+
+                        <span class="card-symbol">
+                            ◷
+                        </span>
+
+                    </div>
+
+                    <div id="upcomingDeadlines">
+
+                        <p class="empty-message">
+                            Loading deadlines...
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobTrack - Applications</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <div class="sidebar-brand"><div class="brand-icon">J</div><span>JobTrack</span></div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item"><span class="nav-icon">⌂</span>Dashboard</a>
+                <a href="applications.html" class="nav-item active"><span class="nav-icon">▣</span>Applications</a>
+                <a href="interviews.html" class="nav-item"><span class="nav-icon">◷</span>Interviews</a>
+            </nav>
+            <div class="sidebar-bottom"><button id="logoutButton" class="logout-btn"><span>↪</span>Logout</button></div>
+        </aside>
+        <main class="main-content">
+            <header class="dashboard-header">
+                <div><p class="eyebrow">JOB SEARCH</p><h1>Applications</h1><p class="dashboard-subtitle">All your job applications in one place.</p></div>
+            </header>
+            <section class="dashboard-card">
+                <div class="card-header"><div><h2>Your applications</h2><p id="applicationsMessage">Loading applications...</p></div></div>
+                <div id="applicationsList"></div>
+            </section>
+        </main>
+    </div>
+    <script src="js/app-shell.js"></script>
+    <script src="js/applications.js"></script>
+</body>
+</html>
