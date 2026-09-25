@@ -15,7 +15,7 @@ signupForm.addEventListener("submit", async function(event) {
     try {
 
         const response = await fetch(
-            "http://127.0.0.1:8000/auth/signup",
+            "https://job-tracker-backend-qs1x.onrender.com",
             {
                 method: "POST",
 

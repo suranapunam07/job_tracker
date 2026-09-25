@@ -12,7 +12,7 @@ loginForm.addEventListener("submit", async function(event) {
 
     try {
         const response = await fetch(
-            "http://127.0.0.1:8000/auth/login",
+            "https://job-tracker-backend-qs1x.onrender.com",
             {
                 method: "POST",
 
