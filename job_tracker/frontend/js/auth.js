@@ -12,7 +12,7 @@ loginForm.addEventListener("submit", async function(event) {
 
     try {
         const response = await fetch(
-            "https://job-tracker-backend-qs1x.onrender.com",
+            "https://job-tracker-backend-qs1x.onrender.com/auth/login",
             {
                 method: "POST",
 

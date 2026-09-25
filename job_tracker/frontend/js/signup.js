@@ -14,22 +14,22 @@ signupForm.addEventListener("submit", async function(event) {
 
     try {
 
-        const response = await fetch(
-            "https://job-tracker-backend-qs1x.onrender.com",
-            {
-                method: "POST",
+       const response = await fetch(
+    "https://job-tracker-backend-qs1x.onrender.com/auth/signup",
+    {
+        method: "POST",
 
-                headers: {
-                    "Content-Type": "application/json"
-                },
+        headers: {
+            "Content-Type": "application/json"
+        },
 
-                body: JSON.stringify({
-                    name: name,
-                    email: email,
-                    password: password
-                })
-            }
-        );
+        body: JSON.stringify({
+            name: name,
+            email: email,
+            password: password
+        })
+    }
+);
 
         const data = await response.json();
 

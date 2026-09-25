@@ -9,7 +9,7 @@ async function loadDashboard() {
     try {
 
         const statsResponse = await fetch(
-            "https://job-tracker-backend-qs1x.onrender.com",
+            "https://job-tracker-backend-qs1x.onrender.com/stats",
             {
                 method: "GET",
 
@@ -63,7 +63,7 @@ async function loadDashboard() {
             stats.by_status?.offer || 0;
 
         const applicationsResponse = await fetch(
-            "https://job-tracker-backend-qs1x.onrender.com",
+            "https://job-tracker-backend-qs1x.onrender.com/applications/",
             {
                 method: "GET",
 
