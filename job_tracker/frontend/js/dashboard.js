@@ -63,7 +63,7 @@ async function loadDashboard() {
             stats.by_status?.offer || 0;
 
         const applicationsResponse = await fetch(
-            "http://127.0.0.1:8000/applications/",
+            "https://job-tracker-backend-qs1x.onrender.com",
             {
                 method: "GET",
 
