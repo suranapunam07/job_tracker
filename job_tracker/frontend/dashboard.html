@@ -64,6 +64,14 @@
                     Interviews
                 </a>
 
+                <a
+                    href="notes.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">✎</span>
+                    Notes
+                </a>
+
             </nav>
 
             <div class="sidebar-bottom">
@@ -79,6 +87,7 @@
             </div>
 
         </aside>
+
 
         <main class="main-content">
 
@@ -102,11 +111,15 @@
 
             </header>
 
+
+            <!-- STATISTICS -->
+
             <section class="stats-grid">
 
                 <div class="stat-card">
 
                     <div class="stat-top">
+
                         <span class="stat-label">
                             Total Applications
                         </span>
@@ -114,6 +127,7 @@
                         <div class="stat-icon blue">
                             ▣
                         </div>
+
                     </div>
 
                     <div
@@ -128,6 +142,7 @@
                     </p>
 
                 </div>
+
 
                 <div class="stat-card">
 
@@ -156,6 +171,7 @@
 
                 </div>
 
+
                 <div class="stat-card">
 
                     <div class="stat-top">
@@ -183,6 +199,7 @@
 
                 </div>
 
+
                 <div class="stat-card">
 
                     <div class="stat-top">
@@ -209,6 +226,7 @@
                     </p>
 
                 </div>
+
 
                 <div class="stat-card">
 
@@ -239,6 +257,166 @@
 
             </section>
 
+
+            <!-- ADD APPLICATION -->
+
+            <section class="dashboard-card add-application-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>
+                            Add Application
+                        </h2>
+
+                        <p>
+                            Add a new job application.
+                        </p>
+
+                    </div>
+
+                    <span class="card-symbol">
+                        +
+                    </span>
+
+                </div>
+
+
+                <form id="applicationForm">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="companyName">
+                                Company Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="companyName"
+                                placeholder="e.g. Google"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="jobTitle">
+                                Job Title
+                            </label>
+
+                            <input
+                                type="text"
+                                id="jobTitle"
+                                placeholder="e.g. Software Engineer Intern"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="applicationStatus">
+                                Status
+                            </label>
+
+                            <select
+                                id="applicationStatus"
+                                required
+                            >
+
+                                <option value="applied">
+                                    Applied
+                                </option>
+
+                                <option value="interview">
+                                    Interview
+                                </option>
+
+                                <option value="rejected">
+                                    Rejected
+                                </option>
+
+                                <option value="offer">
+                                    Offer
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="appliedDate">
+                                Applied Date
+                            </label>
+
+                            <input
+                                type="date"
+                                id="appliedDate"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="deadline">
+                                Deadline
+                            </label>
+
+                            <input
+                                type="date"
+                                id="deadline"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="salary">
+                                Salary
+                            </label>
+
+                            <input
+                                type="number"
+                                id="salary"
+                                placeholder="e.g. 80000"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="primary-btn"
+                    >
+                        Add Application
+                    </button>
+
+
+                    <p
+                        id="applicationMessage"
+                        class="form-message"
+                    ></p>
+
+                </form>
+
+            </section>
+
+
+            <!-- RECENT APPLICATIONS + DEADLINES -->
+
             <section class="dashboard-grid">
 
                 <div class="dashboard-card">
@@ -263,6 +441,7 @@
 
                     </div>
 
+
                     <div id="recentApplications">
 
                         <p class="empty-message">
@@ -272,6 +451,7 @@
                     </div>
 
                 </div>
+
 
                 <div class="dashboard-card">
 
@@ -295,6 +475,7 @@
 
                     </div>
 
+
                     <div id="upcomingDeadlines">
 
                         <p class="empty-message">
@@ -310,6 +491,7 @@
         </main>
 
     </div>
+
 
     <script src="js/dashboard.js"></script>
 

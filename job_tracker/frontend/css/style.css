@@ -34,6 +34,102 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* =========================
+   FORMS
+========================= */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid #dbe0e8;
+
+    border-radius: 10px;
+
+    background: #fbfcfe;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    transition: var(--transition);
+}
+
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+
+    background: white;
+
+    border-color: var(--blue);
+
+    box-shadow:
+        0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+
+    min-height: 120px;
+}
+
+.form-message {
+    min-height: 20px;
+
+    margin-top: 15px;
+
+    color: var(--blue);
+
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.delete-btn {
+    margin-top: 10px;
+
+    padding: 6px 10px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: var(--red-light);
+
+    color: var(--red);
+
+    font-family: inherit;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: var(--transition);
+}
+
+.delete-btn:hover {
+    background: var(--red);
+
+    color: white;
+}
+
+@media (max-width: 700px) {
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
 
 body {
     font-family: "Inter", sans-serif;

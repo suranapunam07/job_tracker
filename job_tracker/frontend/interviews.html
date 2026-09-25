@@ -1,36 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>JobTrack - Interviews</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
     <link rel="stylesheet" href="css/style.css">
+
 </head>
+
 <body>
-    <div class="dashboard">
-        <aside class="sidebar">
-            <div class="sidebar-brand"><div class="brand-icon">J</div><span>JobTrack</span></div>
-            <nav class="sidebar-nav">
-                <a href="dashboard.html" class="nav-item"><span class="nav-icon">⌂</span>Dashboard</a>
-                <a href="applications.html" class="nav-item"><span class="nav-icon">▣</span>Applications</a>
-                <a href="interviews.html" class="nav-item active"><span class="nav-icon">◷</span>Interviews</a>
-            </nav>
-            <div class="sidebar-bottom"><button id="logoutButton" class="logout-btn"><span>↪</span>Logout</button></div>
-        </aside>
-        <main class="main-content">
-            <header class="dashboard-header">
-                <div><p class="eyebrow">JOB SEARCH</p><h1>Interviews</h1><p class="dashboard-subtitle">Your scheduled interviews and results.</p></div>
-            </header>
-            <section class="dashboard-card">
-                <div class="card-header"><div><h2>Upcoming and past interviews</h2><p id="interviewsMessage">Loading interviews...</p></div></div>
-                <div id="interviewsList"></div>
-            </section>
-        </main>
-    </div>
-    <script src="js/app-shell.js"></script>
-    <script src="js/interviews.js"></script>
+
+<div class="dashboard">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+
+            <div class="brand-icon">
+                J
+            </div>
+
+            <span>JobTrack</span>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html" class="nav-item">
+                <span class="nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="applications.html" class="nav-item">
+                <span class="nav-icon">▣</span>
+                Applications
+            </a>
+
+            <a href="interviews.html" class="nav-item active">
+                <span class="nav-icon">◷</span>
+                Interviews
+            </a>
+
+            <a href="notes.html" class="nav-item">
+                <span class="nav-icon">✎</span>
+                Notes
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button id="logoutButton" class="logout-btn">
+                <span>↪</span>
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="dashboard-header">
+
+            <div>
+
+                <p class="eyebrow">
+                    JOB SEARCH
+                </p>
+
+                <h1>
+                    Interviews
+                </h1>
+
+                <p class="dashboard-subtitle">
+                    Track your upcoming and past interviews.
+                </p>
+
+            </div>
+
+        </header>
+
+
+        <!-- ADD INTERVIEW -->
+
+        <section class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        Add Interview
+                    </h2>
+
+                    <p>
+                        Record an interview for an application.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form id="interviewForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="applicationSelect">
+                            Application
+                        </label>
+
+                        <select
+                            id="applicationSelect"
+                            required
+                        >
+
+                            <option value="">
+                                Select application
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="interviewDate">
+                            Interview Date
+                        </label>
+
+                        <input
+                            type="datetime-local"
+                            id="interviewDate"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="interviewType">
+                            Interview Type
+                        </label>
+
+                        <select
+                            id="interviewType"
+                            required
+                        >
+
+                            <option value="">
+                                Select type
+                            </option>
+
+                            <option value="Technical">
+                                Technical
+                            </option>
+
+                            <option value="HR">
+                                HR
+                            </option>
+
+                            <option value="Managerial">
+                                Managerial
+                            </option>
+
+                            <option value="Behavioral">
+                                Behavioral
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="interviewResult">
+                            Result
+                        </label>
+
+                        <select id="interviewResult">
+
+                            <option value="">
+                                Not decided
+                            </option>
+
+                            <option value="Passed">
+                                Passed
+                            </option>
+
+                            <option value="Failed">
+                                Failed
+                            </option>
+
+                            <option value="Pending">
+                                Pending
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                >
+                    Add Interview
+                </button>
+
+
+                <p
+                    id="interviewMessage"
+                    class="form-message"
+                ></p>
+
+            </form>
+
+        </section>
+
+
+        <!-- INTERVIEW LIST -->
+
+        <section class="dashboard-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        Upcoming and Past Interviews
+                    </h2>
+
+                    <p id="interviewsMessage">
+                        Loading interviews...
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div id="interviewsList"></div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="js/app-shell.js"></script>
+<script src="js/interviews.js"></script>
+
 </body>
+
 </html>

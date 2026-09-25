@@ -1,4 +1,5 @@
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = "https://job-tracker-backend-qs1x.onrender.com";
+
 const accessToken = localStorage.getItem("access_token");
 
 if (!accessToken) {
@@ -6,6 +7,7 @@ if (!accessToken) {
 }
 
 const logoutButton = document.getElementById("logoutButton");
+
 if (logoutButton) {
     logoutButton.addEventListener("click", function() {
         localStorage.removeItem("access_token");
@@ -13,10 +15,24 @@ if (logoutButton) {
     });
 }
 
-async function authenticatedRequest(path) {
-    const response = await fetch(`${API_URL}${path}`, {
-        headers: { Authorization: `Bearer ${accessToken}` }
-    });
+async function authenticatedRequest(path, options = {}) {
+
+    const headers = {
+        "Authorization": `Bearer ${accessToken}`,
+        ...(options.headers || {})
+    };
+
+    if (options.body) {
+        headers["Content-Type"] = "application/json";
+    }
+
+    const response = await fetch(
+        `${API_URL}${path}`,
+        {
+            ...options,
+            headers: headers
+        }
+    );
 
     if (response.status === 401) {
         localStorage.removeItem("access_token");
@@ -24,9 +40,13 @@ async function authenticatedRequest(path) {
         return null;
     }
 
+    const data = await response.json();
+
     if (!response.ok) {
-        throw new Error(`Request failed with status ${response.status}`);
+        throw new Error(
+            data.detail || `Request failed with status ${response.status}`
+        );
     }
 
-    return response.json();
+    return data;
 }

@@ -15,7 +15,7 @@ async function loadApplications() {
 
         const select =
             document.getElementById(
-                "applicationSelect"
+                "noteApplication"
             );
 
 
@@ -56,7 +56,7 @@ async function loadApplications() {
 }
 
 
-async function loadInterviews() {
+async function loadNotes() {
 
     try {
 
@@ -71,30 +71,30 @@ async function loadInterviews() {
         }
 
 
-        const interviews = [];
+        const notes = [];
 
 
         for (
             const application of applications
         ) {
 
-            const applicationInterviews =
+            const applicationNotes =
                 await authenticatedRequest(
-                    `/applications/${application.id}/interviews`
+                    `/applications/${application.id}/notes`
                 );
 
 
-            if (!applicationInterviews) {
+            if (!applicationNotes) {
                 continue;
             }
 
 
-            applicationInterviews.forEach(
-                function(interview) {
+            applicationNotes.forEach(
+                function(note) {
 
-                    interviews.push({
+                    notes.push({
 
-                        ...interview,
+                        ...note,
 
                         company_name:
                             application.company_name,
@@ -112,30 +112,40 @@ async function loadInterviews() {
 
         const list =
             document.getElementById(
-                "interviewsList"
+                "notesList"
             );
 
 
         document.getElementById(
-            "interviewsMessage"
+            "notesMessage"
         ).textContent =
-            `${interviews.length} interview${
-                interviews.length === 1 ? "" : "s"
+            `${notes.length} note${
+                notes.length === 1 ? "" : "s"
             }`;
 
 
-        if (interviews.length === 0) {
+        if (notes.length === 0) {
 
             list.innerHTML =
-                '<p class="empty-message">No interviews yet.</p>';
+                '<p class="empty-message">No notes yet.</p>';
 
             return;
         }
 
 
+        notes.sort(
+            function(a, b) {
+
+                return new Date(b.created_at) -
+                    new Date(a.created_at);
+
+            }
+        );
+
+
         list.innerHTML =
-            interviews.map(
-                function(interview) {
+            notes.map(
+                function(note) {
 
                     return `
                         <div class="application-item">
@@ -143,40 +153,24 @@ async function loadInterviews() {
                             <div>
 
                                 <strong>
-                                    ${interview.company_name}
+                                    ${note.company_name}
                                 </strong>
 
                                 <p>
-                                    ${interview.job_title}
+                                    ${note.job_title}
                                 </p>
 
                                 <p>
-                                    ${
-                                        interview.interview_date
-                                            ? new Date(
-                                                interview.interview_date
-                                              ).toLocaleString()
-                                            : "Date not available"
-                                    }
+                                    ${note.content}
                                 </p>
 
-                                ${
-                                    interview.result
-                                        ? `<p>Result: ${interview.result}</p>`
-                                        : ""
-                                }
+                                <p>
+                                    ${new Date(
+                                        note.created_at
+                                    ).toLocaleString()}
+                                </p>
 
                             </div>
-
-
-                            <span class="status-badge">
-
-                                ${
-                                    interview.interview_type ||
-                                    "Interview"
-                                }
-
-                            </span>
 
                         </div>
                     `;
@@ -187,29 +181,29 @@ async function loadInterviews() {
     } catch (error) {
 
         console.error(
-            "Interviews error:",
+            "Notes error:",
             error
         );
 
 
         document.getElementById(
-            "interviewsMessage"
+            "notesMessage"
         ).textContent =
-            "Unable to load interviews.";
+            "Unable to load notes.";
 
     }
 }
 
 
-const interviewForm =
+const noteForm =
     document.getElementById(
-        "interviewForm"
+        "noteForm"
     );
 
 
-if (interviewForm) {
+if (noteForm) {
 
-    interviewForm.addEventListener(
+    noteForm.addEventListener(
         "submit",
         async function(event) {
 
@@ -218,31 +212,19 @@ if (interviewForm) {
 
             const applicationId =
                 document.getElementById(
-                    "applicationSelect"
+                    "noteApplication"
                 ).value;
 
 
-            const interviewDate =
+            const content =
                 document.getElementById(
-                    "interviewDate"
-                ).value;
-
-
-            const interviewType =
-                document.getElementById(
-                    "interviewType"
-                ).value;
-
-
-            const result =
-                document.getElementById(
-                    "interviewResult"
+                    "noteContent"
                 ).value;
 
 
             const message =
                 document.getElementById(
-                    "interviewMessage"
+                    "noteMessage"
                 );
 
 
@@ -258,20 +240,14 @@ if (interviewForm) {
             try {
 
                 await authenticatedRequest(
-                    `/applications/${applicationId}/interviews`,
+                    `/applications/${applicationId}/notes`,
                     {
                         method: "POST",
 
                         body: JSON.stringify({
 
-                            interview_date:
-                                interviewDate,
-
-                            interview_type:
-                                interviewType,
-
-                            result:
-                                result || null
+                            content:
+                                content
 
                         })
                     }
@@ -279,25 +255,25 @@ if (interviewForm) {
 
 
                 message.textContent =
-                    "Interview added successfully!";
+                    "Note added successfully!";
 
 
-                interviewForm.reset();
+                noteForm.reset();
 
 
-                await loadInterviews();
+                await loadNotes();
 
             } catch (error) {
 
                 console.error(
-                    "Add interview error:",
+                    "Add note error:",
                     error
                 );
 
 
                 message.textContent =
                     error.message ||
-                    "Unable to add interview.";
+                    "Unable to add note.";
 
             }
 
@@ -308,4 +284,4 @@ if (interviewForm) {
 
 
 loadApplications();
-loadInterviews();
+loadNotes();

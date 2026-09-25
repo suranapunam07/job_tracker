@@ -27,7 +27,7 @@ signupForm.addEventListener("submit", async function(event) {
             name: name,
             email: email,
             password: password
-        })
+        })  
     }
 );
 
