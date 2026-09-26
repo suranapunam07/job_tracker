@@ -1,10 +1,10 @@
-# Job Application Tracker
+## Job Application Log
 
-A full-stack web application built to help students and job seekers organize and manage their internship and job search process in one place.
+A full stack web application to help students and job seekers to organise and manage their internship and job search process in one place.
 
-Finding internships as a student can become difficult when applying to multiple companies at the same time. It is easy to forget where you applied, application deadlines, interview dates, interview results, or important notes about a company.
+It can be hard to find internships as a student when you apply to multiple companies simultaneously. It is easy to forget where you applied, application deadlines, interview dates, interview results or important notes about a company.
 
-I built this Job Application Tracker to solve that problem and create a simple personal workspace where I can keep track of my entire internship search.
+To counter that, I built this Job Application Tracker to create a simple personal workspace where I can keep track of my entire internship search.
 
 
 ## 🚀 Live Demo
@@ -15,23 +15,19 @@ I built this Job Application Tracker to solve that problem and create a simple p
 
 ## 🎯 Why I Built This
 
-As a student looking for internships, I realized that applying for opportunities involves more than just sending a resume.
+As a student looking for an internship, I learned that applying for opportunities is more than just submitting a resume.
 
-During an internship search, I may have to:
+In looking for an internship, I may have to:
+- Apply to many companies- Monitor the health of various applications
+- Keep track of application deadlines- Get ready for several interviews
+- Follow up on interview results
+- Take notes for companies and interviews
+- Keep track of which companies I have applied to
+Doing all of this manually can get confusing.
 
-- Apply to multiple companies
-- Keep track of different application statuses
-- Remember application deadlines
-- Prepare for multiple interviews
-- Track interview results
-- Maintain notes about companies and interviews
-- Remember which companies I have already applied to
+So I created this **Job Application Tracker** to keep everything organised in one place.
 
-Managing all of this manually can become confusing.
-
-So, I built this **Job Application Tracker** to keep everything organized in one place.
-
-For me as a software engineering student, this project is important because finding internships is an important part of gaining practical industry experience. Having a structured way to track applications helps me stay organized, avoid missing opportunities, and understand my progress throughout the internship search.
+This project is very important to me as a software engineering student, because as an intern, finding an internship is a critical part of gaining practical industry experience. A structured way to keep track of applications helps me stay organised, and understand my progress throughout the internship search.
 
 At the same time, building this project allowed me to apply what I was learning in software development to a real-world problem.
 
