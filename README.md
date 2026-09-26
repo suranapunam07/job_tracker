@@ -1,78 +1,211 @@
 # Job Application Tracker
 
-Job hunting gets messy fast. A few applications turn into thirty, deadlines slip past, and you're digging through old emails trying to remember which company wanted what. I built this app to keep all of that in one place.
+A full-stack web application built to help students and job seekers organize and manage their internship and job search process in one place.
 
-It's a full-stack web app where you can log every job or internship application, track your interviews, jot down notes, and see at a glance how your search is going.
+Finding internships as a student can become difficult when applying to multiple companies at the same time. It is easy to forget where you applied, application deadlines, interview dates, interview results, or important notes about a company.
 
----
+I built this Job Application Tracker to solve that problem and create a simple personal workspace where I can keep track of my entire internship search.
 
-## What it does
 
-**Accounts and security**
-You sign up, log in, and your data stays yours. Passwords are hashed with bcrypt, sessions use JWT tokens, and every API endpoint that touches personal data is protected.
+## 🚀 Live Demo
 
-**Tracking applications**
-For each application you can save the company, job title, posting URL, current status, the date you applied, the deadline, and the salary. Everything you'd otherwise scatter across a spreadsheet and a dozen browser tabs.
-
-**Keeping tabs on interviews**
-Attach interviews to any application with the date, time, type (phone screen, technical, HR, and so on), and how it went.
-
-**Notes**
-Add notes to any application: prep questions, things you learned about the team, or reminders for the follow-up email.
-
-**Dashboard**
-A quick summary of where you stand: total applications, how many are in the applied stage, how many have reached interviews, and how many ended in rejection.
+[View Live Project](https://punam-job-application-tracker.netlify.app)
 
 ---
 
-## Built with
+## 🎯 Why I Built This
 
-**Backend:** Python, FastAPI, SQLAlchemy, Alembic, PostgreSQL, JWT, Passlib and bcrypt
+As a student looking for internships, I realized that applying for opportunities involves more than just sending a resume.
 
-**Frontend:** plain HTML, CSS, and JavaScript. It talks to the API with the Fetch API and keeps the login token in Local Storage. No framework, on purpose, so the code stays easy to read.
+During an internship search, I may have to:
 
-**Tooling:** Docker, Docker Compose, Git, and GitHub
+- Apply to multiple companies
+- Keep track of different application statuses
+- Remember application deadlines
+- Prepare for multiple interviews
+- Track interview results
+- Maintain notes about companies and interviews
+- Remember which companies I have already applied to
 
+Managing all of this manually can become confusing.
 
-job_tracker/
-│
-├── app/
-│   ├── api/            # Route handlers: applications, auth, interviews, notes, stats
-│   ├── core/           # Security helpers (password hashing, JWT)
-│   ├── models/         # SQLAlchemy models: application, interview, note, user
-│   ├── schemas/        # Pydantic schemas for request/response validation
-│   ├── database.py     # Database engine and session setup
-│   └── main.py         # FastAPI app entry point
-│
-├── alembic/            # Database migrations
-│   ├── versions/
-│   └── env.py
-│
-├── frontend/
-│   ├── css/style.css
-│   ├── js/             # auth.js, dashboard.js, signup.js
-│   ├── dashboard.html
-│   ├── index.html      # Login page
-│   └── signup.html
-│
-├── Dockerfile
-├── docker-compose.yml
-├── alembic.ini
-├── requirements.txt
-└── README.md
+So, I built this **Job Application Tracker** to keep everything organized in one place.
 
-## Ideas for what's next
+For me as a software engineering student, this project is important because finding internships is an important part of gaining practical industry experience. Having a structured way to track applications helps me stay organized, avoid missing opportunities, and understand my progress throughout the internship search.
 
-- Email or in-app reminders for upcoming deadlines and interviews
-- Filtering, search, and sorting on the applications list
-- Charts on the dashboard to show progress over time
-- CSV export of your applications
-- A React or Vue rewrite of the frontend
+At the same time, building this project allowed me to apply what I was learning in software development to a real-world problem.
 
 ---
+
+## 💡 What This Project Does
+
+The Job Application Tracker provides a personal dashboard where users can manage their internship and job applications.
+
+Each user has their own authenticated workspace where they can:
+
+- Add job applications
+- Track application status
+- Record application dates
+- Add deadlines
+- Store salary information
+- Track interviews
+- Record interview results
+- Add personal notes
+- View application statistics
+- Delete applications when needed
+
+The goal is to make the internship search process **more organized, trackable, and manageable**.
+
+---
+
+## ✨ Features
+
+### 🔐 User Authentication
+
+- User signup and login
+- JWT-based authentication
+- Secure password hashing
+- Protected API routes
+- User-specific application data
+- Token-based authorization
+- Authentication error handling
+
+### 📋 Application Tracking
+
+Users can add and manage:
+
+- Company name
+- Job title
+- Application status
+- Application date
+- Deadline
+- Salary information
+
+Users can also view and delete their applications.
+
+### 📊 Dashboard
+
+The dashboard provides a quick overview of the job search:
+
+- Total applications
+- Applications by status
+- Recent applications
+- Upcoming deadlines
+- Overall application progress
+
+### 🎯 Interview Tracking
+
+Users can associate interviews with specific applications and record:
+
+- Interview date and time
+- Interview type
+- Interview result
+
+This makes it easier to keep track of different interview stages.
+
+### 📝 Notes
+
+Users can add notes to individual applications.
+
+These notes can be used for:
+
+- Interview preparation
+- Important company information
+- Questions to ask during interviews
+- Preparation points
+- Personal reminders
+
+---
+
+## 🔄 How It Works
+
+----text
+User
+  ↓
+Frontend
+  ↓
+JavaScript Fetch API
+  ↓
+FastAPI REST API
+  ↓
+JWT Authentication
+  ↓
+SQLAlchemy
+  ↓
+PostgreSQL Database
+
+
+                    Job Application Tracker
+                              │
+             ┌────────────────┴────────────────┐
+             │                                 │
+         Frontend                           Backend
+             │                                 │
+      HTML / CSS / JS                      FastAPI
+             │                                 │
+       Fetch API                              │
+             │                                 │
+             └──────────── REST API ───────────┘
+                              │
+                       JWT Authentication
+                              │
+                         SQLAlchemy
+                              │
+                         PostgreSQL
+                              │
+                            Neon
+
+##🧠 Challenges I Faced
+
+🔐 1. Authentication
+
+Authentication was one of the most challenging parts of this project.
+
+I had to understand and implement:
+
+User registration
+User login
+Password hashing
+JWT token generation
+JWT token validation
+Protected API routes
+Authorization headers
+Token expiration and invalid-token handling
+Connecting authentication between frontend and backend
+
+One of the important challenges was making sure that the frontend correctly stored and sent the JWT token with protected API requests.
+This helped me understand how authentication works in a real-world full-stack application instead of only learning it theoretically.
+
+🌐 2. JavaScript & API Integration
+
+Connecting the frontend JavaScript with the FastAPI backend was another major challenge.
+
+I worked with:
+
+fetch()
+GET requests
+POST requests
+DELETE requests
+JSON data
+Authorization headers
+REST API endpoints
+HTTP status codes
+
+Initially, understanding how the frontend should communicate with different backend endpoints was difficult.
+I had to learn how to correctly send requests, handle responses, pass authentication tokens, and update the webpage based on API data.
+This gave me a much better understanding of how frontend and backend applications communicate.
+
+
+## 🔗 Links
+
+- Live Demo: https://punam-job-application-tracker.netlify.app
+- Backend API: https://job-tracker-backend-qs1x.onrender.com
+- API Documentation: https://job-tracker-backend-qs1x.onrender.com/docs
 
 ## Contributing
 
 Suggestions and pull requests are welcome. If you spot a bug or have an idea, open an issue and let's talk about it.
 
----
+
+
+
